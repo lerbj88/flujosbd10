@@ -58,7 +58,7 @@ public class UsuarioController {
 
     @PostMapping(value = "/usuarios/form")
     public String adddog(@RequestParam("fiusuario") Integer fiusuario,
-                         @RequestParam("fipassword") String fcpassword,
+                         @RequestParam("fcpassword") String fcpassword,
                           Model model) {
         usuariosDao.addADog(fiusuario, fcpassword);
         System.out.println("name = " + fiusuario + ", password = " + fcpassword );
