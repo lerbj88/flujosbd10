@@ -1,16 +1,14 @@
 package com.flujos.flujosbd.controller;
 
 
-import com.flujos.flujosbd.dao.UsuariosDao;
+import com.flujos.flujosbd.dao.UsuarioDao;
 import com.flujos.flujosbd.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,7 +17,7 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuariosDao usuariosDao;
+    private UsuarioDao usuarioDao;
 /*
     @RequestMapping(value = { "usuarios/list" }, method = RequestMethod.GET)
     public String listarUsuarios(Model model) throws SQLException {
@@ -41,7 +39,7 @@ public class UsuarioController {
     @RequestMapping(value = { "usuarios/list" }, method = RequestMethod.GET)
     public String listarUsuarios(Model model) throws SQLException {
 
-        List<Usuario> list = usuariosDao.findAll();
+        List<Usuario> list = usuarioDao.findAll();
         model.addAttribute("listarUsuarios", list);
 
         return "usuarios/list";
@@ -57,12 +55,12 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/usuarios/form")
-    public String adddog(@RequestParam("fiusuario") Integer fiusuario,
+    public String crearUsusario(@RequestParam("fiusuario") Integer fiusuario,
                          @RequestParam("fcpassword") String fcpassword,
                           Model model) {
-        usuariosDao.addADog(fiusuario, fcpassword);
+        usuarioDao.crearUsuario(fiusuario, fcpassword);
         System.out.println("name = " + fiusuario + ", password = " + fcpassword );
-        return "redirect:/";
+        return "redirect:/usuarios/list";
     }
 
 }

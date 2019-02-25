@@ -1,6 +1,6 @@
 package com.flujos.flujosbd;
 
-import com.flujos.flujosbd.dao.UsuariosDao;
+import com.flujos.flujosbd.dao.UsuarioDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class FlujosbdApplicationTests {
 
 
     @Autowired
-    UsuariosDao usuariosDao;
+    UsuarioDao usuarioDao;
 
 
 
@@ -32,7 +32,7 @@ public class FlujosbdApplicationTests {
 
         //opencsv.Readercsv();
     //    opencsv.listClientes();
-        usuariosDao.findAll();
+        usuarioDao.findAll();
     }
 
 }
