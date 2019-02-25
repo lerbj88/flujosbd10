@@ -31,7 +31,7 @@ public class UsuariosDao extends JdbcDaoSupport {
     }
 
 
-    public List<Usuario> findAll() {
+    public List<Usuario> findAll()  {
 
         String sql = "SELECT a.usuario, b.fcnombre FROM usuarios a inner join ResponsablesFlujos b on a.usuario = b.FiNumEmpleado";
 
