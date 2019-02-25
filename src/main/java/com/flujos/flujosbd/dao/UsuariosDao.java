@@ -33,14 +33,14 @@ public class UsuariosDao extends JdbcDaoSupport {
 
     public List<Usuario> findAll()  {
 
-        String sql = "SELECT a.usuario, b.fcnombre FROM usuarios a inner join ResponsablesFlujos b on a.usuario = b.FiNumEmpleado";
+        String sql = "SELECT a.fiusuario, b.fcnombre FROM usuarios a inner join ResponsablesFlujos b on a.fiusuario = b.FiNumEmpleado";
 
         List<Usuario> customers = new ArrayList<Usuario>();
 
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
         for (Map row : rows) {
             Usuario usuario = new Usuario();
-            usuario.setUsuario((Integer)(row.get("USUARIO")));
+            usuario.setFiusuario((Integer)(row.get("fiUSUARIO")));
             usuario.setFcnombre((String)row.get("fcnombre"));
             customers.add(usuario);
         }
@@ -50,10 +50,10 @@ public class UsuariosDao extends JdbcDaoSupport {
     }
 
 
-    public void addADog(Integer usuario, String password){
+    public void addADog(Integer fiusuario, String fcpassword){
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource1);
-        jdbcTemplate.update("INSERT INTO usuarios(usuario,password)VALUES(?,?)",usuario,password);
+        jdbcTemplate.update("INSERT INTO usuarios(fiusuario,fcpassword)VALUES(?,?)",fiusuario,fcpassword);
 
     }
 

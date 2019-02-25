@@ -57,11 +57,11 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/usuarios/form")
-    public String adddog(@RequestParam("usuario") Integer usuario,
-                         @RequestParam("password") String password,
+    public String adddog(@RequestParam("fiusuario") Integer fiusuario,
+                         @RequestParam("fipassword") String fcpassword,
                           Model model) {
-        usuariosDao.addADog(usuario, password);
-        System.out.println("name = " + usuario + ", password = " + password );
+        usuariosDao.addADog(fiusuario, fcpassword);
+        System.out.println("name = " + fiusuario + ", password = " + fcpassword );
         return "redirect:/";
     }
 

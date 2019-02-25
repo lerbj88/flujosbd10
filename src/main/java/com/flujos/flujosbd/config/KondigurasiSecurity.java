@@ -17,14 +17,14 @@ import javax.sql.DataSource;
 public class KondigurasiSecurity extends WebSecurityConfigurerAdapter{
     public static final String SQL_LOGIN
             //="select username, password, active as enabled \n" +
-            ="select usuario, password, active\n" +
-            "from usuarios where usuario = ?";
+            ="select fiusuario, fcpassword, fiactive\n" +
+            "from usuarios where fiusuario = ?";
 
     public static final String SQL_PERMISSION
-            = "select u.usuario, r.role as authority\n" +
-            "from usuarios u join usuarios_roles ur on u.id = ur.id_usuario\n" +
-            "join roles r on ur.id_role = r.id\n" +
-            "where u.usuario = ?";
+            = "select u.fiusuario, r.fcrol as authority\n" +
+            "from usuarios u join usuarios_roles ur on u.fiid = ur.fiidusuario\n" +
+            "join roles r on ur.fiidrole = r.fiid\n" +
+            "where u.fiusuario = ?";
 
     @Autowired
     private DataSource dataSource;

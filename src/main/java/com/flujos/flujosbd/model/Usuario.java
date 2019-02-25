@@ -3,25 +3,25 @@ package com.flujos.flujosbd.model;
 
 public class Usuario {
 
-    private Integer usuario;
+    private Integer fiusuario;
     private String fcnombre;
-    private String password;
+    private String fcpassword;
 
     public Usuario() {
     }
 
-    public Usuario(Integer usuario, String fcnombre, String password) {
-        this.usuario = usuario;
+    public Usuario(Integer fiusuario, String fcnombre, String fcpassword) {
+        this.fiusuario = fiusuario;
         this.fcnombre = fcnombre;
-        this.password = password;
+        this.fcpassword = fcpassword;
     }
 
-    public Integer getUsuario() {
-        return usuario;
+    public Integer getFiusuario() {
+        return fiusuario;
     }
 
-    public void setUsuario(Integer usuario) {
-        this.usuario = usuario;
+    public void setFiusuario(Integer fiusuario) {
+        this.fiusuario = fiusuario;
     }
 
     public String getFcnombre() {
@@ -32,14 +32,11 @@ public class Usuario {
         this.fcnombre = fcnombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getFcpassword() {
+        return fcpassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void crearUsuario(Integer usuario, String password) {
+    public void setFcpassword(String fcpassword) {
+        this.fcpassword = fcpassword;
     }
 }
