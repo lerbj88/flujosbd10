@@ -48,6 +48,7 @@ public class ResponsablesflujosDaoImpl extends JdbcDaoSupport implements Respons
         return lista;
     }
 
+
     public Responsablesflujos findByResponsableflujo(String fcnombre){
 
         //String nombre ="'"+"%"+fcnombre+"%"+"'";
