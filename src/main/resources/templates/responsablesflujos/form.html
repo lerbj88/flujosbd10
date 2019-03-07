@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Usuarios</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+                    <li class="nav-item "><a id="opcion2" class="nav-link" href="/responsablesflujos/list">Responsables</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <h2>Crear Responsable</h2>
+
+    <div class="container">
+        <form action="#" th:action="@{/responsablesflujos/form}" th:object="${responsabledeflujo}"
+              method="post">
+
+
+            <div class="form-group row">
+                <label for="finumempleado" class="col-sm-2 col-form-label">No de empleado</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{finumempleado}"
+                           name="" class="form-control" id="finumempleado" placeholder="No. de empleado"/>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcnombre" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcnombre}"
+                           name="" class="form-control" id="fcnombre" placeholder="Nombre de empleado"/>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <label for="fccorreo" class="col-sm-2 col-form-label">Correo</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fccorreo}"
+                           name="" class="form-control" id="fccorreo" placeholder="e-mail"/>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <label for="ficelular" class="col-sm-2 col-form-label">No. de Celular</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{ficelular}"
+                           name="" class="form-control" id="ficelular" placeholder="No. de celular"/>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <a th:href="@{/responsablesflujos/list}" class="btn btn-light" role="button">
+                        <span aria-hidden="true"></span>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+</section>
+</body>
+</html>

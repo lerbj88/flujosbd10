@@ -55,16 +55,22 @@ public class KondigurasiSecurity extends WebSecurityConfigurerAdapter{
 
                 .anyRequest().authenticated()
                 .and()
+           //     .csrf().disable()
                 .formLogin()
+
                .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/usuarios/list", true)
+
                 .and()
+               // .csrf().disable()
                 .logout();
-    }
+            }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 
 }

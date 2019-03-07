@@ -6,6 +6,7 @@ public class Usuario {
     private Integer fiusuario;
     private String fcnombre;
     private String fcpassword;
+    private Integer idrol;
 
     public Usuario() {
     }
@@ -38,5 +39,23 @@ public class Usuario {
 
     public void setFcpassword(String fcpassword) {
         this.fcpassword = fcpassword;
+    }
+
+    public Integer getIdrol() {
+        return idrol;
+    }
+
+    public void setIdrol(Integer idrol) {
+        this.idrol = idrol;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "fiusuario=" + fiusuario +
+                ", fcnombre='" + fcnombre + '\'' +
+                ", fcpassword='" + fcpassword + '\'' +
+                ", idrol=" + idrol +
+                '}';
     }
 }

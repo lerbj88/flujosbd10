@@ -13,6 +13,8 @@
 </head>
 <body>
 <div class="container ">
+
+
     <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-6 centrarform">
             <div id="iosBlurBg">
@@ -30,8 +32,15 @@
 
                         <input class="" type="password" name="password" placeholder="Password...">
                         <span class="focus-border"></span></input>
-
-
+                    <br>
+                    <div th:if="${param.error}">
+                    <label style="color:red">Error al validar usuario y password</label>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <label>
+                           Haz finalizado sesion correctamente.
+                        </label>
+                    </div>
                     <div class="botonentrar">
                         <button class="btn btn-secondary btn-md" type="submit">Entrar..
                             <i class="fas fa-key"></i>

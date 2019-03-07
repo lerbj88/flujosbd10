@@ -17,19 +17,19 @@
                 <ul  class="nav nav-pills flex-column">
                     <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
                     </a></li>
-                    <li class="nav-item "><a id="opcion2" class="nav-link" href="/responsablesflujos/list">Responsables</a>
+                    <li class="nav-item"><a id="opcion2" class="nav-link" href="/responsablesflujos/list">Responsables</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <h1>Usuarios</h1>
+    <h1>Responsables de flujos</h1>
     <div align="right">
-        <form th:action="@{/usuarios/list}" method="get">
+        <form th:action="@{/responsablesflujos/list}" method="get">
             <div class="input-group input-group-sm" style="width: 450px;">
-                <input type="text" name="fiusuario" class="form-control pull-right" placeholder="Buscar por Usuario" th:if="${key} == null"/>
-                <input type="text" name="fiusuario" class="form-control pull-right" placeholder="Buscar por Usuario" th:if="${key} != null" th:fiusuario="${key}" />
+                <input type="text" name="fcnombre" class="form-control pull-right" placeholder="Buscar por Empleado" th:if="${key} == null"/>
+                <input type="text" name="fcnombre" class="form-control pull-right" placeholder="Buscar por Empleado" th:if="${key} != null" th:fcnombre="${key}" />
                 <div class="input-group-btn">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar...</button>
                 </div>
@@ -37,29 +37,31 @@
         </form>
     </div>
 
-    <a th:href="@{/usuarios/form}" class="btn btn-info btn-xs"><i class="far fa-file"></i> Agregar usuario
+   <a th:href="@{/responsablesflujos/form}" class="btn btn-info btn-xs"><i class="far fa-file"></i> Agregar Responsable de flujo
     </a>
 
     <table class="table table-striped table-sm">
         <tr>
-            <th><a class="sorted" sd:pagination-sort="usuario">Usuario</a></th>
+            <th><a class="sorted" sd:pagination-sort="usuario">No. de empleado</a></th>
             <th><a class="sorted" sd:pagination-sort="usuario">Nombre</a></th>
+            <th><a class="sorted" sd:pagination-sort="usuario">Correo</a></th>
 
 
             <th>Opciones</th>
         </tr>
-        <tr th:each="p : ${listarUsuarios}">
+        <tr th:each="p : ${lista}">
 
-            <td th:text="${p.fiusuario}"></td>
+            <td th:text="${p.finumempleado}"></td>
             <td th:text="${p.fcnombre}"></td>
+            <td th:text="${p.fccorreo}"></td>
 
 
             <td>
-                <a  class="btn btn-warning"  title="Editar Usuario" th:href="@{/usuarios/form(fiusuario=${p.fiusuario})}">
+                <a  class="btn btn-warning"  title="Editar Empleado" th:href="@{/responsablesflujos/form(finumempleado=${p.finumempleado})}">
                     <i  class="far fa-edit" ></i>
                     </span>
                 </a>
-                <a  class="btn btn-danger btn-xs" title="Eliminar Usuario" th:href="@{/usuarios/eliminarUsuario(fiusuario=${p.fiusuario})}">
+                <a  class="btn btn-danger btn-xs" title="Eliminar Empleado" th:href="@{/responsablesflujos/eliminarResponsable(finumempleado=${p.finumempleado})}">
                     <i  class="fas fa-trash-alt "></i>
                     </span>
                 </a>
