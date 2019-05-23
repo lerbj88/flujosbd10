@@ -21,6 +21,6 @@ public interface ReenviosService {
     //Page<Taex_errormensajestienda> filtrarCadenasPaginas(Integer pages1, Number fnflujoid, String fnfolioconsec, String fcdescerror, Number fnsucursaldest, String desde, String hasta);
     public String EnviarHistorico(Integer fnflujoid, String [] flujosids);
     public String EnviarPendientes(Integer fnflujoid, String [] flujosids);
-    public String getNamepc();
+
 
 }
