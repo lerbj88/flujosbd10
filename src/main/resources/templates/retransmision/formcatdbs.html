@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Usuarios</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+                     <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoria</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion6" class="nav-link" href="/retransmision/list">Retransmision</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <h2>Base de datos</h2>
+
+    <div class="container">
+        <form action="#" th:action="@{/retransmision/formcatdbs}" th:object="${dbsretransmision}"
+              method="post">
+
+
+
+            <div class="form-group row">
+                <label for="sel1" class="col-sm-2 col-form-label">Tipo :</label>
+                <div class="col-sm-4">
+                    <select class="form-control"    th:field="*{fitipo}" id="sel1" name="sellist1">
+                        <option value="" disabled selected>Elige una opcion</option>
+                        <option value="1">iSeries</option>
+                        <option value="2">Oracle</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="fcdescripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcdescripcion}"
+                           name="" class="form-control" id="fcdescripcion" placeholder="Descripción"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcdatabase" class="col-sm-2 col-form-label">Base de datos:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcdatabase}"
+                           name="" class="form-control" id="fcdatabase" placeholder="Base de datos"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcservicename" class="col-sm-2 col-form-label">Service name:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcservicename}"
+                           name="" class="form-control" id="fcservicename" placeholder="Service name"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcip" class="col-sm-2 col-form-label">Direccion IP:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcip}"
+                           name="" class="form-control" id="fcip" placeholder="IP"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcusuario" class="col-sm-2 col-form-label">Usuario:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcusuario}"
+                           name="" class="form-control" id="fcusuario" placeholder="Usuario"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcpassword" class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-4">
+                    <input type="password"
+                           th:field="*{fcpassword}"
+                           name="" class="form-control" id="fcpassword" placeholder="Password"/>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <a th:href="@{/retransmision/listcatdbs}" class="btn btn-light" role="button">
+                        <span aria-hidden="true"></span>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+</section>
+</body>
+</html>

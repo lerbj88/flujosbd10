@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Transacción en sucursal</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoría</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link active" href="/transacciones/list">Transacciones</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <h2>Consultar Transacción en sucursal</h2>
+
+    <br>
+
+    <form th:action="@{/transacciones/list2}" method="get">
+        <div class="form-row">
+
+        <div class="form-group col-sm-2">
+            <label for="sucursaldes">Sucursal:</label>
+            <input type="text" name="fnsucursaldest" class="form-control"
+                   id="sucursaldes" required="true" maxlength="4"  placeholder="Sucursal"    th:fnsucursaldest="${fnsucursaldest}" th:value="${fnsucursaldest}">
+        </div>
+
+            <div class="form-group col-sm-2">
+                <label for="fitranno1">Transacción inicial:</label>
+                <input type="text" name="fitranno" class="form-control" id="fitranno1" required="true"   placeholder="Transacción"    th:fitrano="${fitranno}" th:value="${fitranno}">
+            </div>
+
+            <div class="form-group col-sm-2">
+                <label for="fitranno2">Transacción final:</label>
+                <input type="text" name="fitranno" class="form-control" id="fitranno2" required="true"   placeholder="Transacción"    th:fitrano="${fitranno}" th:value="${fitranno}">
+            </div>
+
+            <div class="input-group-btn  topmargin2">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+            </div>
+        </div>
+
+    </form>
+
+    <br>
+    <div th:if="${lista!=null}" >
+        <div  >
+    <a  class="btn btn-success topmargin5"  title="Generar XML"  th:href="@{/transacciones/downloadXML(fnsucursaldest=${fnsucursaldest},fitranno=${fitranno})}">
+        <i  class="fas fa-file-xml" ></i> Generar XML
+
+    </a>
+        </div>
+
+        <table class="table table-striped table-sm textos">
+            <tr>
+                <th><a class="sorted" >FITRANNO</a></th>
+                <th><a class="sorted" >FITRANTIPO</a></th>
+                <th><a class="sorted" >FICONSECTIPO</a></th>
+                <th><a class="sorted" >FDTRANFECHR</a></th>
+                <th><a class="sorted" >FCTRANWS</a></th>
+                <th><a class="sorted" >FCTRANUSR</a></th>
+                <th><a class="sorted" >FITRANNOREG</a></th>
+                <th><a class="sorted" >FCAPLICACION</a></th>
+                <th><a class="sorted" >FITRANSMIT</a></th>
+                <th><a class="sorted" >FDINICIOTRAN</a></th>
+                <th><a class="sorted" >FDFINTRAN</a></th>
+
+            </tr>
+            <tr th:each="p : ${lista}">
+
+                <td th:text="${p.fitranno}"></td>
+                <td th:text="${p.fitrantipo}"></td>
+                <td th:text="${p.ficonsectipo}"></td>
+                <td th:text="${p.fdtranfechr}"></td>
+                <td th:text="${p.fctranws}"></td>
+                <td th:text="${p.fctranusr}"></td>
+                <td th:text="${p.fitrannoreg}"></td>
+                <td th:text="${p.fcaplicacion}"></td>
+                <td th:text="${p.fitransmit}"></td>
+                <td th:text="${p.fdiniciotran}"></td>
+                <td th:text="${p.fdfintran}"></td>
+
+
+            </tr>
+        </table>
+
+<br>
+
+    <table class="table table-striped table-sm textos">
+        <tr>
+            <th><a class="sorted" >FITRANNO</a></th>
+            <th><a class="sorted" >FICONSDETA</a></th>
+            <th><a class="sorted" >FITIPOREG</a></th>
+            <th><a class="sorted" >FCDATODETA</a></th>
+
+        </tr>
+        <tr th:each="p : ${lista2}">
+
+            <td th:text="${p.fitranno}"></td>
+            <td th:text="${p.ficonsdeta}"></td>
+            <td th:text="${p.fitiporeg}"></td>
+            <td th:text="${p.fcdatodeta}"></td>
+
+        </tr>
+    </table>
+
+    </div>
+
+</section>
+
+</body>
+
+
+</html>

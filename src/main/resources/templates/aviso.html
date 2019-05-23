@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Distribucion del Flujo Transaccional</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2  d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item"><a id="" class="nav-link" href="/reenviosflujos/list">Cadenas en Error</a></li>
+                    <li class="nav-item"><a id="" class="nav-link" href="/historico/list">Consultar Histórico</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <p>CARTA DE CONFIDENCIALIDAD - PROTECCI&Oacute;N DE DATOS PERSONALES</p>
+
+    <div class="aviso">
+
+    <p>Declaraci&oacute;n: Manifiesto a Banco Azteca S.A. Instituci&oacute;n de Banca M&uacute;ltiple que, con motivo de las funciones que desempe&ntilde;o al servicio de la organizaci&oacute;n (sus filiales, asociadas y/o clientes), me comprometo a guardar en estricta reserva la informaci&oacute;n, procedimientos, y todos aquellos hechos y actos que con motivo de los servicios desempe&ntilde;ados sean de mi conocimiento y no divulgar la informaci&oacute;n reservada, confidencial, o industrial que me sea proporcionada, ya que &eacute;sta es propiedad de esa Organizaci&oacute;n.&#160;</p>
+
+    <p>Informaci&oacute;n confidencial, reservada o secreto industrial: Esta informaci&oacute;n incluye enunciativa y no limitativamente:&#160; a) Descubrimientos, invenciones y desarrollos. b) Informaci&oacute;n t&eacute;cnica, cient&iacute;fica, comercial, jur&iacute;dica o derechos de autor, de auditoria, estrategia, de mercado, o comercializaci&oacute;n de sistemas o de ingenier&iacute;a, incluyendo informaci&oacute;n de solicitud o registro de patentes y marcas, nombres y avisos comerciales. ejemplo: c) Materiales, procesos, dise&ntilde;os de aparatos en equipos, auxiliares de ingenier&iacute;a, manuales de instalaci&oacute;n, software, perif&eacute;ricos, arquitectura, l&oacute;gica, diagramas de flujo (entendiendo por &ldquo;software&rdquo;, cualquier tipo de programa ejecutable, grabado en cualquier forma o en cualquier medio). Informaci&oacute;n de manejo t&eacute;cnico, por ejemplo: propuesta, programas y desarrollo de componentes y an&aacute;lisis de &aacute;rea de Desarrollo. Informaci&oacute;n t&aacute;ctica como campa&ntilde;as comerciales, Operativos y Publicidad. &#160; d) Informaci&oacute;n comercial e informaci&oacute;n en relaci&oacute;n con asuntos de car&aacute;cter legal, sea &eacute;ste extrajudicial o judicial, tales como propuestas, Nuevas Visiones, datos de tipo financiero, estudios de mercado, planos de construcci&oacute;n, productos nuevos, estrategias, Informaci&oacute;n de clientela, proveedores, dise&ntilde;os y logotipos. e) Informaci&oacute;n del personal, por ejemplo: salarios, asignaci&oacute;n de puestos en el trabajo, habilidades, revisiones de m&eacute;rito, organigramas y f) Estrategias, procesos, contrataci&oacute;n y regulaci&oacute;n de Recursos Humanos.</p>
+
+    <p>Entiendo que esta informaci&oacute;n puede ser intangible, tal es el caso del conocimiento que no ha sido registrado, las ideas y/o los conceptos. Al igual, la informaci&oacute;n puede encontrarse plasmada de manera tangible, como pueden serlo los documentos f&iacute;sicos o electr&oacute;nicos. El t&eacute;rmino &ldquo;documento&rdquo; incluye: manuales, instructivos, memorandums, dibujo, materiales de entrenamiento, publicidad, especificaciones, fotograf&iacute;as, representaciones gr&aacute;ficas, informaci&oacute;n, software o modelos y archivos. g) Datos personales de Identificaci&oacute;n, financieros y patrimoniales, as&iacute; como los de car&aacute;cter sensible de acuerdo con lo estipulado en la Ley Federal de Protecci&oacute;n de Datos Personales en Posesi&oacute;n de los Particulares.&#160;</p>
+
+    <p>Acepto desde ahora que toda la informaci&oacute;n que se me haga saber se entiende reservada. Desde ahora acepto y me obligo a que todas las claves y password que se me hacen saber son para uso individual y no podr&eacute; compartirlas a ninguna otra persona, ya que se equipara a una firma electr&oacute;nica siendo yo el &uacute;nico responsable de su uso y consecuencias. Igualmente evitar&eacute; comentar en pasillos, comedores o por cualquier medio, a&uacute;n de manera muy general las informaciones relacionadas con la organizaci&oacute;n en los t&eacute;rminos ya citados. La confidencialidad incluye el contenido de la presente carta, reconociendo que queda prohibida la reproducci&oacute;n, modificaci&oacute;n o mutilaci&oacute;n del contenido del presente documento.</p>
+
+    <p>Protecci&oacute;n de Datos Personales:</p>
+
+    <p>Acepto desde ahora que con motivo de mis actividades dentro de la organizaci&oacute;n tratare datos personales, inclusive de car&aacute;cter sensible (en adelante los &ldquo;Datos Personales&rdquo;), los cuales ser&aacute;n sujetos a la obtenci&oacute;n, uso, divulgaci&oacute;n y almacenamiento, entendiendo que el uso abarca cualquier acci&oacute;n de acceso, manejo, aprovechamiento, transferencia o disposici&oacute;n de datos personales por lo que a partir de ahora me obligo a: 1. Tratar los Datos Personales que me han proporcionado conforme a las instrucciones de la organizaci&oacute;n. 2. No aplicar, ni utilizar los Datos Personales con una finalidad diferente a las instrucciones de la organizaci&oacute;n y precisamente para cumplir con las obligaciones adquiridas con el titular. 3. Guardar la informaci&oacute;n que reciba en secreto, por lo que no podr&aacute; divulgar la informaci&oacute;n en forma personal a terceras personas en forma verbal, escrita, por medios electr&oacute;nicos, magn&eacute;ticos o por cualquier otro medio es por lo cual se obliga a partir del momento de su recepci&oacute;n o conocimiento a conservarla y no divulgarla sin autorizaci&oacute;n expresa de la organizaci&oacute;n. 4. Adoptar las medidas f&iacute;sicas, administrativas y t&eacute;cnicas, necesarias para garantizar la seguridad de los Datos Personales y se evite su alteraci&oacute;n, p&eacute;rdida, sustracci&oacute;n, tratamiento o acceso no autorizado. El incumplimiento o violaci&oacute;n de cualquiera de las obligaciones aqu&iacute; contra&iacute;das implicar&aacute; el responder por los da&ntilde;os ante la organizaci&oacute;n, as&iacute; como con los terceros afectados y titulares de los Datos Personales por los perjuicios que de dicho incumplimiento se deriven, sin perjuicio de las multas o sanciones estipuladas en los ordenamientos jur&iacute;dicos aplicables en materia de protecci&oacute;n de Datos Personales, as&iacute; como de los delitos tipificados como penas privativas de la libertad. Marco Legal: Conozco el contenido y alcance jur&iacute;dico de los preceptos legales 82, 83, 84, 85, 86, 86 bis 1, 221 bis, 223, 224, 225, 226, de la Ley de la Propiedad Industrial, 103 de la Ley Federal del Derecho de Autor, 47 fracc. IX, 134 fracc. I, II, XII y XIII, 135 fracc. IX, de la Ley Federal del Trabajo, 210, 211, 211 bis 1, 211 bis 7, 384 del C&oacute;digo Penal para el Distrito Federal en materia del fuero com&uacute;n y para toda la Rep&uacute;blica en materia del fuero Federal, 67, 68 y 69 de la Ley Federal de Protecci&oacute;n de Datos Personales en Posesi&oacute;n de los Particulares (en adelante la &ldquo;LFPDPPP&rdquo;), mismos que se encuentran transcritos en el anexo de &eacute;ste documento titulado &ldquo;Art&iacute;culos Relacionados&rdquo; adem&aacute;s de todas las disposiciones aplicables al caso, por lo tanto me obligo a no utilizar en beneficio propio o en beneficio de terceras personas, directa o indirectamente, la informaci&oacute;n, actos y dem&aacute;s hechos que sean de mi conocimiento.&#160; Por lo anterior tengo conocimiento de las responsabilidades y sanciones aplicables en caso de revelar alg&uacute;n secreto industrial o comunicaci&oacute;n reservada que conozca o haya recibido con motivo de mi servicio, cargo o puesto. Conozco las consecuencias penales en que puedo incurrir para el caso de que, sin autorizaci&oacute;n, conozca o copie informaci&oacute;n contenida en sistemas o equipos de inform&aacute;tica protegidos por alg&uacute;n mecanismo de seguridad y que la penalidad puede aumentar si utilizo dicha informaci&oacute;n en mi provecho propio o ajeno.&#160; Estoy consciente que los derechos patrimoniales de un programa de computo, reglas de negocio, Know How (Tecnolog&iacute;a), m&eacute;todos, capital intelectual y/o precursores son entera propiedad de mi empleador as&iacute; como cualquier mejora, desarrollo o modificaci&oacute;n que se haya efectuado es propiedad del mismo en t&eacute;rminos del art&iacute;culo 103 de la Ley Federal del derecho de autor y aplicables de la Ley Federal del Trabajo. Cedo en esto acto a favor de mi empleador cualquier desarrollo o aportaci&oacute;n que hubiere hecho o haga en el futuro, desarrollo o aportaci&oacute;n que queda en propiedad de mi empleador.&#160;</p>
+
+    </div>
+</section>
+
+</body>
+
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8">
@@ -8,18 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Distribución del flujo transaccional</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" >
-      <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/css/all.css}"  >
+    <link rel="stylesheet"  th:href="@{/css/bootstrap.min.css}"  >
+
+    <!-- Custom styles for this template -->
     <link th:href="@{/css/aplikasi.css}" rel="stylesheet">
 </head>
 
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="/">Dashboard</a>
+    <a class="navbar-brand" href="/reenviosflujos/list">Flujo transaccional</a>
     <button class="navbar-toggler d-lg-none" type="button"
             data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -30,18 +32,12 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" href="/">Home
-                </span>
-            </a></li>
-
-            <li class="nav-item" id="menu2"><a class="nav-link" href="/usuarios/list">Area Administrativa</a>
+            <li  th:if="${#request.isUserInRole('ADMIN')}" class="nav-item" id="menu2"><a class="nav-link" href="/usuarios/list" >Área Administrativa</a>
             </li>
 
-            <li class="nav-item hide-icon d-none"><a class="nav-link" href="#">Menu3</a></li>
+            <li class="nav-item hide-icon "><a class="nav-link" href="/usuarios/perfil" >Perfil</a></li>
             </ul>
-        <div class="welcome">
-            <span sec:authorize="isAuthenticated()">Welcome <span sec:authentication="name"></span></span>
-        </div>
+        <label class="text-white topmargin" >Usuario: <b th:inline="text">[[${#httpServletRequest.remoteUser}]]  </b>  &nbsp;    </label>
         <form th:action="@{/logout}" method="post">
             <button type="submit" class="btn btn-primary">Salir</button>
         </form>
@@ -49,26 +45,51 @@
 </nav>
 
 
-        <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 
 
-            <!-- start content utama -->
-            <div>
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3 " role="main">
+
+
+            <div >
                 <section layout:fragment="content"></section>
             </div>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  ></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" ></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" ></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+           <!-- <script src="/js/jquery-3.2.1.slim.min.js"  ></script> -->
+            <script src="/js/jquery-3.4.0.min.js"  ></script>
+            <script src="/js/popper.min.js"  ></script>
+            <script src="/js/4.2.1.bootstrap.min.js" ></script>
+            <script src="/js/bootbox.min.js"></script>
+            <script src="/js/funciones.js"></script>
+    <!--<script src="/js/bootstrap.min.js" ></script> -->
+    <!--<script src="/js/jquery.min.js"></script> -->
+
+    <!--<script src="/js/bootstrap.min3.4.js"></script> -->
+           <!-- <script src="/js/bootstrap-confirmation.min.js"></script> -->
+
+
+
             <!-- end content utama --> </main>
+
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">Distribución del flujo transaccional:
+        <a href="/aviso" target="_blank"> Aviso de privacidad</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 
 
 </body>
+<!--
 <script>
     $(document).ready(function() {
         $(".nav").find(".active").removeClass("active");
         $('a[href="' + location.pathname + '"]').closest('a').addClass('active');
     });
 </script>
-
+-->
 </html>

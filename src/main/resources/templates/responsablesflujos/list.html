@@ -19,6 +19,8 @@
                     </a></li>
                     <li class="nav-item"><a id="opcion2" class="nav-link" href="/responsablesflujos/list">Responsables</a>
                     </li>
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -42,9 +44,9 @@
 
     <table class="table table-striped table-sm">
         <tr>
-            <th><a class="sorted" sd:pagination-sort="usuario">No. de empleado</a></th>
-            <th><a class="sorted" sd:pagination-sort="usuario">Nombre</a></th>
-            <th><a class="sorted" sd:pagination-sort="usuario">Correo</a></th>
+            <th><a class="sorted" sd:pagination-sort="finumempleado">No. de empleado</a></th>
+            <th><a class="sorted" sd:pagination-sort="fcnombre">Nombre</a></th>
+            <th><a class="sorted" sd:pagination-sort="fcorreo">Correo</a></th>
 
 
             <th>Opciones</th>
@@ -61,13 +63,73 @@
                     <i  class="far fa-edit" ></i>
                     </span>
                 </a>
-                <a  class="btn btn-danger btn-xs" title="Eliminar Empleado" th:href="@{/responsablesflujos/eliminarResponsable(finumempleado=${p.finumempleado})}">
+
+                <a  class="btn btn-danger" title="Eliminar Empleado" th:href="@{/responsablesflujos/eliminarResponsable(finumempleado=${p.finumempleado})}" onclick="return confirm('Confirmar eliminar usuario?');">
                     <i  class="fas fa-trash-alt "></i>
-                    </span>
+
                 </a>
+
+
+
+
+
+
+
+
             </td>
         </tr>
     </table>
+
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="pagination"><p>Mostrando <span class="badge"
+                                                       th:text="${page.size * (page.number-1) + 1}"></span> de
+                <span class="badge" th:text="${page.lastPage ? page.totalElements : page.size * (page.number-1)+ page.size}"></span> de
+                <span class="badge"
+                      th:text="${page.totalElements}"></span>
+                registros</p></div>
+        </div>
+
+        <div class="col-sm-7">
+            <!-- Pagination Bar -->
+            <div th:fragment='paginationbar'>
+                <div class="text-center">
+                    <ul class="pagination pagination-centered">
+                        <li class="page-item"  th:class="${page.firstPage}?'disabled':''">
+                            <span class="sr-only" th:if='${page.firstPage}'>← First</span>
+                            <a class="page-link" th:if='${not page.firstPage}' th:href='@{${page.url}(pag=0,size=${page.size})}'>←
+                                Inicio</a>
+                        </li>
+                        <li class="page-item" th:class="${page.hasPreviousPage}? '' : 'disabled'">
+                            <span class="sr-only" th:if='${not page.hasPreviousPage}'>«</span>
+                            <a class="page-link" th:if='${page.hasPreviousPage}'
+                               th:href='@{${page.url}(pag=${page.number-2},size=${page.size})}'
+                               title='Anterior'>«</a>
+                        </li>
+                        <li class="page-item  " th:each='item : ${page.items}' th:classappend="${item.current} ? active : ''" >
+                            <span class="page-link " th:if='${item.current}' th:text='${item.number}'>1</span>
+                            <a class="page-link " th:if='${not item.current}'
+                               th:href='@{${page.url}(pag=${item.number-1},size=${page.size})}'><span
+                                    th:text='${item.number}'>1</span></a>
+                        </li>
+                        <li class="page-item" th:class="${page.hasNextPage}? '' : 'disabled'">
+                            <span class="sr-only" th:if='${not page.hasNextPage}'>»</span>
+                            <a class="page-link" th:if='${page.hasNextPage}'
+                               th:href='@{${page.url}(pag=${page.number},size=${page.size})}'
+                               title='Siguiente'>»</a>
+                        </li>
+                        <li class="page-item" th:class="${page.lastPage}? 'disabled' : ''">
+                            <span class="sr-only" th:if='${page.lastPage}'>Last →</span>
+                            <a  class="page-link" th:if='${not page.lastPage}'
+                               th:href='@{${page.url}(pag=${page.totalPages - 1},size=${page.size})}'>Ultimo →</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
 
 
 </section>

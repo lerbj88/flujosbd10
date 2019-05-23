@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Retransmision de transacciones</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoría</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion6" class="nav-link" href="/retransmision/list">Retransmision</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <h2>Retransmisión de transacciones</h2>
+
+    <div align="right">
+        <a th:href="@{listcatdbs}" class="btn btn-warning btn-xs pull-right">
+            <i class="far fa-list-alt"></i> Catálogo de Bases de datos
+        </a>
+    </div>
+    <br>
+
+    <form th:action="@{retransmision/lista}" method="get">
+
+    </form>
+            <form  th:action="@{/retransmision/valuser}"
+                   method="post">
+                <div class="form-row">
+                    <div  class="form-group" id="destinoiseries2">
+                        <div class="col-md-12">
+                <label class="col-md-10 col-form-label">Destino :</label>
+                <select class="form-control"  name="destino1"  th:fidestino="${fidestino}"  >
+                    <option th:each="p : ${dbslist}"
+                            th:value="${p.fiid}"
+                            th:text="${p.fcdescripcion}"  ></option>
+                </select>
+                    </div>
+                    </div>
+
+
+
+
+            <div  class="form-group" id="user4002">
+                <div class="col-md-12">
+                <label  class="col-md-10 col-form-label" >Usuario:</label>
+                <input type="text" name="fcusuario" class="form-control" placeholder="usuario"  required="true"  >
+            </div>
+            </div>
+
+
+            <div class="form-group" id="pwd4002">
+                <div class="col-md-12">
+                    <label  class="col-md-10 col-form-label" >Contraseña:</label>
+                    <input type="password" name="fccontrasena" class="form-control" placeholder="contraseña"  required="true"  >
+                </div>
+            </div>
+
+                <div class="form-group botonvaluser" id="valuser2">
+                    <div class="col-md-12">
+                        <button type="submit" id="botonvaluser1" class="leftmargin1 btn btn-info fa-pull-right" name="action" value="1" >Validar usuario </button>
+                    </div>
+                </div>
+
+                    <div th:if="${!mensaje.isEmpty() && mensaje.contains('Error') }" class="alert alert-danger">
+                        <label class="col-form-label"  th:text="${mensaje}"> </label>
+                    </div>
+
+                    <div th:if="${!mensaje.isEmpty() && mensaje.contains('Exitosa')}" class="alert alert-success">
+                        <label class="col-form-label"  th:text="${mensaje}"> </label>
+                    </div>
+
+
+                </div>
+
+    </form>
+
+
+    <br>
+
+
+
+
+</section>
+
+</body>
+
+
+</html>
+

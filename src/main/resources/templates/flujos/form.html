@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Usuarios</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+                     <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoria</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <h2>Crear Flujo</h2>
+
+    <div class="container">
+        <form action="#" th:action="@{/flujos/form}" th:object="${flujo}"
+              method="post">
+
+
+            <div class="form-group row">
+                <label for="id_flujo" class="col-sm-2 col-form-label">No de flujo</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{id_flujo}"
+                           name="" class="form-control" id="id_flujo" placeholder="No. de flujo"/>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{descripcion}"
+                           name="" class="form-control" id="descripcion" placeholder="Descripción"/>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <a th:href="@{/flujos/list}" class="btn btn-light" role="button">
+                        <span aria-hidden="true"></span>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+</section>
+</body>
+</html>

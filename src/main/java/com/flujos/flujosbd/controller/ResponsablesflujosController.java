@@ -3,8 +3,10 @@ package com.flujos.flujosbd.controller;
 
 import com.flujos.flujosbd.dao.ResponsablesflujosDao;
 import com.flujos.flujosbd.model.Responsablesflujos;
-import com.flujos.flujosbd.model.Usuario;
+import com.flujos.flujosbd.services.ResponsablesFlujosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ResponsablesflujosController {
@@ -23,9 +25,18 @@ public class ResponsablesflujosController {
     @Autowired
     private ResponsablesflujosDao responsablesflujosDao;
 
+    @Autowired
+    private ResponsablesFlujosService responsablesFlujosService;
 
     @RequestMapping(value = { "responsablesflujos/list" }, method = RequestMethod.GET)
-    public String listarUsuarios(@RequestParam(name = "fcnombre", required = false) String fcnombre, Model model) throws SQLException {
+    public String listarUsuarios(@RequestParam(name = "fcnombre", required = false) String fcnombre,
+                                 @RequestParam(value = "pag") Optional<Integer> page1,
+                                 @RequestParam("size") Optional<Integer> size,
+                                 Pageable pageable,
+                                 Model model) throws SQLException {
+
+
+
         if (fcnombre != null) {
             model.addAttribute("key", fcnombre);
             Responsablesflujos responsablesflujos = (Responsablesflujos) responsablesflujosDao.findByResponsableflujo(fcnombre);
@@ -33,8 +44,14 @@ public class ResponsablesflujosController {
             return "responsablesflujos/list";
         } else {
 
-            List<Responsablesflujos> list = responsablesflujosDao.findAll();
-            model.addAttribute("lista", list);
+            Integer currentPage = page1.orElse(0);
+            int pageSize = size.orElse(6);
+
+            Page<Responsablesflujos> lista = responsablesFlujosService.listResponsables( currentPage , pageSize);
+            PageWrapper<Responsablesflujos> page = new PageWrapper<Responsablesflujos>(lista, "/responsablesflujos/list");
+            model.addAttribute("lista", page.getContent());
+            model.addAttribute("page", page);
+
             return "responsablesflujos/list";
         }
     }

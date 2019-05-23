@@ -37,7 +37,14 @@ public class KondigurasiSecurity extends WebSecurityConfigurerAdapter{
                 .dataSource(dataSource)
                 .usersByUsernameQuery(SQL_LOGIN)
                 .authoritiesByUsernameQuery(SQL_PERMISSION)
-                .passwordEncoder(passwordEncoder()); // bcrypt
+                .passwordEncoder(passwordEncoder())
+                .rolePrefix("ROLE_"); // bcrypt
+
+/*
+                .inMemoryAuthentication()
+                .withUser("admin").password("admin").roles("ADMIN")
+                .and().withUser("user").password("user").roles("USER");
+*/
 
 
     }
@@ -46,20 +53,16 @@ public class KondigurasiSecurity extends WebSecurityConfigurerAdapter{
         http
 
                 .authorizeRequests()
-
-
                 .antMatchers("/static/js/js/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/fonts/**").permitAll()
-
-
                 .anyRequest().authenticated()
                 .and()
            //     .csrf().disable()
                 .formLogin()
 
                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/usuarios/list", true)
+                .defaultSuccessUrl("/reenviosflujos/list", true)
 
                 .and()
                // .csrf().disable()

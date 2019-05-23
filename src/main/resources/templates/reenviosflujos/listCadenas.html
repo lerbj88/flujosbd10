@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lista de flujos</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2  d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item"><a id="reenvios" class="nav-link"  href="/reenviosflujos/list">Cadenas en error</a></li>
+                    <li class="nav-item"><a id="historico" class="nav-link" href="/historico/list">Consultar Historico</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <h3> Cadenas por flujo <label  th:text="${flujo}"> </label> en sucursal <label  th:text="${sucursal}"> </label> </h3>
+
+    <div class="table-responsive-sm">
+    <table class="table textos">
+        <tr>
+            <th><a class="sorted" >PAIS</a></th>
+            <th><a class="sorted" >CANAL</a></th>
+            <th><a class="sorted" >SUCURSAL</a></th>
+            <th><a class="sorted" >FOLIO CONSECUTIVO</a></th>
+            <th><a class="sorted" >INTENTOS</a></th>
+            <th><a class="sorted" >FECHA PROCESO</a></th>
+            <th><a class="sorted" >CADENA</a></th>
+            <th><a class="sorted" >ERROR</a></th>
+
+            <th>Opciones</th>
+        </tr>
+        <tr th:each="p : ${lista}">
+
+            <td th:text="${p.fnpaisdest}"></td>
+            <td th:text="${p.fncanaldest}"></td>
+            <td th:text="${p.fnsucursaldest}"></td>
+            <td th:text="${p.fnfolioconsec}"></td>
+            <td th:text="${p.fnnointentos}"></td>
+            <td th:text="${p.fdfechaproceso}"></td>
+            <td th:text="${p.fccadenaejec}"></td>
+            <td th:text="${p.fcdescerror}"></td>
+            <td>
+                <a  class="btn btn-danger" title="Enviar a historico" th:href="@{/reenviosflujos/enviarHistorico(fnfolioconsec=${p.fnfolioconsec} , fnflujoid=${flujo} , fnsucursaldest=${p.fnsucursaldest}) }"  ><spanr>
+                    <i> Historico</i>
+                    </spanr>
+                </a>
+
+                <a  class="btn btn-info" title="Reenviar Cadena" th:href="@{/reenviosflujos/enviarPendientes(fnfolioconsec=${p.fnfolioconsec} , fnflujoid=${flujo} , fnsucursaldest=${p.fnsucursaldest}) }"  ><spanr>
+                    <i> Reintentar</i>
+                </spanr>
+                </a>
+
+            </td>
+        </tr>
+    </table>
+    </div>
+
+</section>
+
+</body>
+
+
+</html>

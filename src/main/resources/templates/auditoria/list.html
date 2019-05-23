@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Auditoria de flujos</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link active" href="/auditoria/list">Auditoría</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <h2>Consultar auditoría de cadenas</h2>
+
+    <br>
+
+
+    <form th:action="@{/auditoria/lists}" method="get">
+        <div class="form-row">
+            <div class="form-group row">
+
+                <div class="form-group col-sm-10">
+                    <label class="">No. de Flujo :</label>
+                    <select class="form-control"  name="fnflujoid"  th:fnflujoid="${fnflujoid}"  >
+                        <option th:each="p : ${flujoslist}"
+                                th:value="${p.id_flujo}"
+
+                                th:text="${p.descripcion}"  ></option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+
+
+        <div class="form-group col-sm-2">
+            <label for="sucursaldes">Sucursal:</label>
+            <input type="text" name="fnsucursaldest" class="form-control" id="sucursaldes" required="true" maxlength="4"  placeholder="Sucursal"    th:id_flujo="${fnsucursaldest}">
+        </div>
+
+            <div class="form-group col-sm-3">
+                <label for="desde">Desde:</label>
+                <input type="date" name="Desde" class="form-control" id="desde"   th:id_flujo="${Desde}" >
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="hasta">Hasta:</label>
+                <input type="date" name="Hasta" class="form-control" id="hasta"   th:id_flujo="${Hasta}">
+            </div>
+            <div class="input-group-btn  topmargin2">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+
+        <table class="table table-striped table-sm textos">
+            <tr>
+                <th><a class="sorted" >FLUJO</a></th>
+                <th><a class="sorted" >PAÍS</a></th>
+                <th><a class="sorted" >CANAL</a></th>
+                <th><a class="sorted" >SUCURSAL</a></th>
+                <th><a class="sorted" >FOLIO CONSECUTIVO</a></th>
+                <th><a class="sorted" >FECHA PROCESO</a></th>
+                <th><a class="sorted" >INTENTOS</a></th>
+                <th><a class="sorted" >STATUS</a></th>
+                <th><a class="sorted" >PROCESO</a></th>
+                <th><a class="sorted" >USUARIO</a></th>
+                <th><a class="sorted" >WORKSTATION</a></th>
+                <th><a class="sorted" >FECHA</a></th>
+                <th><a class="sorted" >ERROR</a></th>
+                <th><a class="sorted" >CADENA</a></th>
+
+            </tr>
+            <tr th:each="p : ${lista}">
+                <td th:text="${p.fnflujoid}"></td>
+                <td th:text="${p.fnpaisdest}"></td>
+                <td th:text="${p.fncanaldest}"></td>
+                <td th:text="${p.fnsucursaldest}"></td>
+                <td th:text="${p.fcfolioconsec}"></td>
+                <td th:text="${p.fdfechaproceso}"></td>
+                <td th:text="${p.fnnointentos}"></td>
+                <td th:text="${p.fnstatus}"></td>
+                <td th:text="${p.fcproceso}"></td>
+                <td th:text="${p.fcusuario}"></td>
+                <td th:text="${p.fcworkstation}"></td>
+                <td th:text="${p.fdfecha}"></td>
+                <td th:text="${p.fcdescerror}"></td>
+                <td th:text="${p.fccadenaejec}"></td>
+            </tr>
+        </table>
+
+</section>
+
+</body>
+
+
+</html>

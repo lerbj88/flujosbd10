@@ -10,14 +10,22 @@
 
 <section layout:fragment="content">
 
+
     <div class="container-fluid">
         <div class="row">
             <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
                 <ul  class="nav nav-pills flex-column">
                     <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
                     </a></li>
-                    <li class="nav-item  "><a id="opcion2" class="nav-link" href="/responsablesflujos/list">Responsables</a>
+
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
                     </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoria</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+
                 </ul>
             </nav>
         </div>
@@ -34,25 +42,48 @@
                 <div class="col-sm-4">
                     <input type="text"
                            th:field="*{fiusuario}"
-                           name="" class="form-control" id="nombre" placeholder="No. de empleado"/>
+                           name="" class="form-control" id="nombre" placeholder="No. de empleado:"/>
 
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="password" class="col-sm-2 col-form-label">Contrasena</label>
+                <label for="fcnombre" class="col-sm-2 col-form-label">Nombre:</label>
                 <div class="col-sm-4">
-                    <input type="password"
-                           th:field="*{fcpassword}"
-                           name="" class="form-control" id="password" placeholder="Password"/>
+                    <input type="text"
+                           th:field="*{fcnombre}"
+                           name="" class="form-control" id="fcnombre" placeholder="Nombre"/>
+
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="fccorreo" class="col-sm-2 col-form-label">Correo:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fccorreo}"
+                           name="" class="form-control" id="fccorreo" placeholder="Correo"/>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fctelefono" class="col-sm-2 col-form-label">Telefono:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fctelefono}"
+                           name="" class="form-control" id="fctelefono" placeholder="Telefono"/>
+
+                </div>
+            </div>
+
+
 
 
             <div class="form-group row">
                 <label for="sel1" class="col-sm-2 col-form-label">Elige un rol :</label>
                 <div class="col-sm-4">
-                    <select class="form-control"    th:field="*{idrol}" id="sel1" name="sellist1">
+                    <select class="form-control"    th:field="*{fiidrole}" id="sel1" name="sellist1">
                         <option value="" disabled selected>Elige una opcion</option>
                         <option value="1">Admin</option>
                         <option value="2">General</option>

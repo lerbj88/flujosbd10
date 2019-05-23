@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Retranmision de transacciones</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoría</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion6" class="nav-link" href="/retransmision/list">Retransmision</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <h2>Retransmitir Transacciones de sucursal a <label th:text="${fcdbdescripcion}" ></label></h2>
+
+    <br>
+
+
+    <div th:if="${!mensaje.isEmpty() && mensaje.contains('Exitosa')}" class="alert alert-success" id="valuser400">
+        <label class="col-form-label"  th:text="${mensaje}"> </label>
+    </div>
+
+    <form th:action="@{/historico/lists1}" method="get">
+        <div class="form-row">
+
+
+
+        </div>
+
+    </form>
+
+    <nav>
+        <div class="nav nav-tabs active" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link show active " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Errores 21 en AS400</a>
+            <a class="nav-item nav-link " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Rango de transacciones en sucursal</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+            <form th:action="@{/retransmision/errores21}" method="get">
+                <div class="form-row">
+
+                    <div class="input-group-btn  topmargin2">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Comprobar faltantes</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+
+
+
+
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+            <br>
+            <form th:action="@{/retransmision/rangosucursal}" method="get">
+                <div class="form-row">
+
+                    <div class="form-group col-sm-2">
+                        <label for="sucursal">Sucursal:</label>
+                        <input type="text" name="fisucursal" class="form-control" id="sucursal" required="true" maxlength="4"  placeholder="Sucursal"    th:fisucursal="${fisucursal}">
+                    </div>
+
+
+                    <div class="input-group-btn  topmargin2">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Comprobar faltantes</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+
+
+</section>
+
+</body>
+
+
+</html>

@@ -3,56 +3,50 @@
 
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="#" th:href="@{/css/login.css}"/>
-    <title>Log in.</title>
+    <link th:href="@{/css/font-awesome.min.css}"  rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/fontsgooglecss.css}"/>
+    <link rel="stylesheet"  th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  >
+    <title>Acceso al sistema</title>
+
     <!-- include css in the header -->
 </head>
-<body>
-<div class="container ">
+<body >
 
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand textoblanco" >Distribucion del Flujo Transaccional</a>
+</nav>
+<div id="login">
 
-    <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-6 centrarform">
-            <div id="iosBlurBg">
-                <div id=""></div>
-            </div>
-            <!-- Login Form -->
-            <div class="loginForm ">
-                <div class="title">
-                    <p>Acceso al sistema</p>
-                </div>
-                <form name="f" th:action="@{/login}" method="post">
-                  <!--  <input class="col-3"> -->
-                        <input class="" type="text" name="username" placeholder="Usuario">
-                        <span class="focus-border"></span></input>
+                <form  name="f" th:action="@{/login}" method="post">
+                    <h3 class="text-center" >Acceso al sistema</h3>
+                        <input id="user" class="form-control" type="text" name="username" placeholder="Usuario">
+                        </input>
 
-                        <input class="" type="password" name="password" placeholder="Password...">
-                        <span class="focus-border"></span></input>
+                        <input id="pass" class="form-control" type="password" name="password" placeholder="Password...">
+                        </input>
                     <br>
-                    <div th:if="${param.error}">
-                    <label style="color:red">Error al validar usuario y password</label>
+                    <div th:if="${param.error}" class="alert alert-danger">
+                    <label>Error al validar usuario y password</label>
                     </div>
                     <div th:if="${param.logout}">
-                        <label>
-                           Haz finalizado sesion correctamente.
-                        </label>
+                        <label>Haz finalizado sesion correctamente.</label>
                     </div>
-                    <div class="botonentrar">
-                        <button class="btn btn-secondary btn-md" type="submit">Entrar..
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar..
                             <i class="fas fa-key"></i>
                         </button>
-                    </div>
+
 
                 </form>
-            </div>
-            </div>
-            </div>
-    </div>
+
+</div>
+
+<script  src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </body>
-<script  src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
 </html>
+

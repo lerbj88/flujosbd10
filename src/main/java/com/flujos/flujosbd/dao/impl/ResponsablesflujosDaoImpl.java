@@ -31,7 +31,7 @@ public class ResponsablesflujosDaoImpl extends JdbcDaoSupport implements Respons
 
     public List<Responsablesflujos> findAll()  {
 
-        String sql = "SELECT  TOP 10 finumempleado, fcnombre, FcCorreo FROM ResponsablesFlujos order by FiNumEmpleado desc ";
+        String sql = "SELECT   finumempleado, fcnombre, FcCorreo FROM ResponsablesFlujos order by FiNumEmpleado desc ";
 
         List<Responsablesflujos> lista = new ArrayList<Responsablesflujos>();
 
@@ -44,14 +44,14 @@ public class ResponsablesflujosDaoImpl extends JdbcDaoSupport implements Respons
             lista.add(responsablesflujos);
         }
 
-        System.out.println(rows);
+        //System.out.println(rows);
         return lista;
     }
 
 
     public Responsablesflujos findByResponsableflujo(String fcnombre){
 
-        //String nombre ="'"+"%"+fcnombre+"%"+"'";
+        String nombre ="'"+"%"+fcnombre+"%"+"'";
 
         String sql = "SELECT finumempleado, fcnombre, Fccorreo FROM ResponsablesFlujos where FiNumEmpleado = ? ";
 
@@ -60,7 +60,7 @@ public class ResponsablesflujosDaoImpl extends JdbcDaoSupport implements Respons
                 sql, new Object[] {fcnombre},
                 new BeanPropertyRowMapper(Responsablesflujos.class));
 
-        System.out.print("usuario encontrado"+responsablesflujos);
+        //System.out.print("usuario encontrado"+responsablesflujos);
         return responsablesflujos;
     }
 
@@ -94,7 +94,7 @@ public class ResponsablesflujosDaoImpl extends JdbcDaoSupport implements Respons
                 sql, new Object[] { finumempleado },
                 new BeanPropertyRowMapper(Responsablesflujos.class));
 
-        System.out.print("usuario encontrado"+responsablesflujos);
+        //System.out.print("usuario encontrado"+responsablesflujos);
         return responsablesflujos;
     }
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Usuarios</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item "><a id="opcion1" class="nav-link" href="/usuarios/list">Usuarios
+                    </a></li>
+
+                    <li class="nav-item "><a id="opcion3" class="nav-link" href="/flujos/list">Flujos</a>
+                    </li>
+
+                    <li class="nav-item "><a id="opcion4" class="nav-link" href="/auditoria/list">Auditoria</a>
+                    </li>
+                    <li class="nav-item "><a id="opcion5" class="nav-link" href="/transacciones/list">Transacciones</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <h2>Editar usuario</h2>
+    <br>
+
+    <div align="right">
+    <a th:href="@{/usuarios/resetpwd(fiusuario=${usuario.fiusuario})}" class="btn btn-warning btn-xs pull-right"  onclick="return confirm('Confirmar resetear Contrasena?')">
+        <i class="far fa-edit"></i> Reiniciar contrasena
+    </a>
+    </div>
+    <br>
+
+    <div class="container text-justify">
+        <form action="#" th:action="@{/usuarios/edit}" th:object="${usuario}"
+              method="post">
+
+
+            <div class="form-group row">
+                <b> <label  class="col-sm-8 col-form-label">Usuario:</label> </b>
+                <div class="col-sm-4">
+                    <label  class="col-sm-4 col-form-label" th:text="*{fiusuario}"></label>
+                </div>
+
+            </div>
+
+            <input class="d-none" name="fiusuario" th:value="*{fiusuario}">
+            <div class="form-group row">
+                <b>      <label for="fcnombre" class="col-sm-2 col-form-label">Nombre:</label></b>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcnombre}"
+                           name="" class="form-control" id="fcnombre" placeholder="Password"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <b>      <label for="fccorreo" class="col-sm-2 col-form-label">Correo:</label></b>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fccorreo}"
+                           name="" class="form-control" id="fccorreo" placeholder="Correo"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <b>      <label for="fctelefono" class="col-sm-2 col-form-label">Telefono:</label></b>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fctelefono}"
+                           name="" class="form-control" id="fctelefono" placeholder="Telefono"/>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <strong>      <label  class="col-sm-8 col-form-label">Elige un rol:</label></strong>
+                <div class="col-sm-4">
+                    <select class="form-control"    th:field="*{fiidrole}" >
+                        <option value="" disabled selected>Elige una opcion</option>
+                        <option value="1" />Admin</option>
+                        <option value="2" >General</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <a th:href="@{/usuarios/list}" class="btn btn-light" role="button">
+                        <span aria-hidden="true"></span>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</section>
+</body>
+</html>

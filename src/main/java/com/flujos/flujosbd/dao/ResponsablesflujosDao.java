@@ -2,10 +2,11 @@ package com.flujos.flujosbd.dao;
 
 import com.flujos.flujosbd.model.Responsablesflujos;
 import com.flujos.flujosbd.model.Usuario;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface ResponsablesflujosDao {
+public interface ResponsablesflujosDao  {
     List<Responsablesflujos> findAll();
     public Responsablesflujos findByResponsableflujo(String fcnombre);
     void crearResponsable(Integer finumempleado , String fcnombre, String fccorreo ,Integer ficelular);

@@ -82,6 +82,7 @@ public class FlujosbdApplication {
         return dataSource;
     }
 
+
     @Bean(name = "dataSource3")
     public DataSource getDataSource3() throws SQLException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
